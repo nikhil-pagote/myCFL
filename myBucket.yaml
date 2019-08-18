@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: ---
+Metadata: 
+
+Parameters: 
+
+Mappings: 
+
+Conditions: 
+
+Resources: 
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      #AccessControl: Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl
+      BucketName: "my0cfl0bucket"
+      #CorsConfiguration: 
+      #LifecycleConfiguration: 
+      #NotificationConfiguration: 
+      #VersioningConfiguration: 
+      #WebsiteConfiguration: 
+      #Tags:
+        #- Key: key
+          #Value: value
+Outputs:

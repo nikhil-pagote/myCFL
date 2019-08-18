@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: ---
+Metadata: 
+
+Parameters: 
+
+Mappings: 
+
+Conditions:
+  ValidateRegion: !StringEquals [ "aws:RequestedRegion", "eu-west-1" ] 
+
+Resources: 
+  iamPolicy:
+  Type: AWS::IAM::ManagedPolicy
+  Condition: ValidateRegion
+  Properties:
+    Description: "Policy for creating a test database" 
+    Path: "/"
+    PolicyDocument:
+      Version: "2012-10-17"
+      Statement:
+        -
+          Effect: "Allow"
+          Action:
+            - "s3:ListBucket"
+            - "s3:GetObject"
+            - "s3:PutObject"
+            - "s3:DeleteObject"
+          Resource: "arn:aws:s3:::${s3203b2a3}"
+Outputs:

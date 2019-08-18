@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2012-10-17'
+Description: Test to create first template using troposphere
+Resources:
+  my0cfl0role:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action:
+              - sts:AssumeRole
+            Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+      MaxSessionDuration: 3600
+      Path: /
+      RoleName: my0cfl0role
+    Type: AWS::IAM::Role
