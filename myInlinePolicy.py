@@ -1,5 +1,5 @@
 from troposphere import GetAtt, Output, Ref, Template
-from troposphere.iam import ManagedPolicy, Policy
+from troposphere.iam import ManagedPolicy
 
 import boto3
 
@@ -7,7 +7,7 @@ t = Template()
 t.set_description("Test to create first template using troposphere")
 t.set_version("2012-10-17")
 
-t.add_resource(Policy(
+t.add_resource(ManagedPolicy(
     "my0cfl0policy",
     PolicyName="my0cfl0policy",
     PolicyDocument={

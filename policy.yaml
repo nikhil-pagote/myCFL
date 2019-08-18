@@ -1,17 +1,25 @@
-AWSTemplateFormatVersion: '2012-10-17'
+AWSTemplateFormatVersion: '2010-09-09'
+Conditions:
+  ValidateRegion: !Equals
+    - !Ref 'aws:RequestedRegion'
+    - eu-west-1
 Description: Test to create first template using troposphere
 Resources:
   my0cfl0policy:
-    PolicyDocument:
-      Roles: my0cfl0role
-      Statement:
-        - Action:
-            - s3:ListBucket
-            - s3:GetObject
-            - s3:PutObject
-            - s3:DeleteObject
-          Effect: Allow
-          Resource:
-            - arn:aws:s3:::my0cfl0bucket
-      Version: '2012-10-17'
-    PolicyName: my0cfl0policy
+    Condition: ValidateRegion
+    Properties:
+      ManagedPolicyName: my0cfl0policy
+      Path: /
+      PolicyDocument:
+        Roles: my0cfl0role
+        Statement:
+          - Action:
+              - s3:ListBucket
+              - s3:GetObject
+              - s3:PutObject
+              - s3:DeleteObject
+            Effect: Allow
+            Resource:
+              - arn:aws:s3:::my0cfl0bucket
+        Version: '2012-10-17'
+    Type: AWS::IAM::ManagedPolicy

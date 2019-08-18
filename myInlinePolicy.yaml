@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: ---
+
+Resources: 
+  iamPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: my0cfl0policy
+      Roles:
+       - my0cfl0role
+      PolicyDocument:  # policy document - can be JSON or YAML
+        Version: "2012-10-17"
+        Statement:
+          -
+            Effect: "Allow"
+            Action:
+              - "s3:ListBucket"
+              - "s3:GetObject"
+              - "s3:PutObject"
+              - "s3:DeleteObject"
+            Resource: "arn:aws:s3:::my0cfl0bucket"
